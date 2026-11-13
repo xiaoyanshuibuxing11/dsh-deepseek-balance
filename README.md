@@ -1,4 +1,4 @@
-# DeepSeek Harness-deepseek-balance
+# dsh-deepseek-balance
 
 在 DeepSeek Harness 对话区显示当前 DeepSeek 余额：一张半透明卡片加一个圆形刷新按钮，按住 Ctrl + 左键可以拖到屏幕任意位置。
 
@@ -19,7 +19,7 @@
    ```yaml
    - insert:
        - id: deepseek-balance
-         name: DeepSeek Harness-deepseek-balance
+         name: dsh-deepseek-balance
          config:
            source: auto
    ```
@@ -50,7 +50,7 @@
 
 - 余额请求由宿主进程发起；页面只接收金额字符串，API Key 不会进入页面。
 - API Key 走 DeepSeek Harness 凭据服务，不写进配置文件；仓库不含任何密钥。
-- `localStorage` 只存拖动位置（键 `DeepSeek Harness-deepseek-balance:position`）。
+- `localStorage` 只存拖动位置（键 `dsh-deepseek-balance:position`）。
 
 ## 目录
 
