@@ -1,0 +1,51 @@
+# Bundle patch for dsh-deepseek-balance.
+#
+# 这一行把插件挂进 desktop profile。数值都在下面的 config 里，
+# 改完重启一次 DSH 生效（整段删掉就是卸载）。
+#
+# 余额来源（二选一，默认先问已登录账号）：
+#   source            auto | account | api-key
+#                     auto = 先用 DSH 已登录账号（设置 → 账号），失败再回退到 API Key
+#   apiKeyEnv         API Key 的凭据引用名，默认 DEEPSEEK_API_KEY（设置 → 模型里那个）
+#   apiBase           API Key 回退时用的开放平台地址，默认 https://api.deepseek.com
+#   timeoutMs         单次余额请求的超时毫秒数
+#
+# 位置与样式：
+#   position          bottom-left | bottom-right   卡片贴对话区左下角还是右下角
+#   offsetX           距对话区左边（或右边）的距离，px
+#   offsetY           距对话区底部的距离，px（再往上抬一点）
+#   maxWidth          卡片最大宽度，px
+#   blurPx            卡片自身的磨砂半径，px；0 = 不磨砂。背景磨砂度 100% 约等于 40px
+#   surfaceOpacity   卡片表面不透明度 0..1；越低越透出背景，0.42 左右文字仍清晰
+#   tint             卡片表面混合色，如 rgba(0,0,0,.38)（深色主题）
+#
+# 显示：
+#   showBonus        是否在余额下面多显示一行「赠送余额」（默认 false：这份额度很少有钱）
+#   showSource       是否显示余额来源（已登录账号 / API Key）
+#   fetchOnMount     打开界面就自动读一次（默认 true）；设 false 则只在你点刷新时读
+#   clockSeconds     最后更新时间是否显示秒（默认 false，即 时:分）
+#
+# 注意：这里没有文本大小选项——卡片文字跟随 DSH 自己的「外观 → 字号」，
+# 不自己造一套字号阶梯。
+#
+# 拖动：按住 Ctrl + 左键拖卡片可自由移动，位置记在浏览器 localStorage
+# （键 dsh-deepseek-balance:position），Ctrl + 双击回到下面这个初始位置。
+- insert:
+    - id: deepseek-balance
+      name: dsh-deepseek-balance
+      config:
+        source: auto
+        apiKeyEnv: DEEPSEEK_API_KEY
+        apiBase: 'https://api.deepseek.com'
+        timeoutMs: 15000
+        position: bottom-left
+        offsetX: 10
+        offsetY: 18
+        maxWidth: 236
+        blurPx: 16
+        surfaceOpacity: 0.42
+        tint: 'rgba(0,0,0,.38)'
+        showBonus: false
+        showSource: true
+        fetchOnMount: true
+        clockSeconds: false
