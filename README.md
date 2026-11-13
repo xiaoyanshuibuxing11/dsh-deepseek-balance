@@ -1,14 +1,14 @@
-# dsh-deepseek-balance
+# DeepSeek Harness-deepseek-balance
 
-在 DSH 对话区显示当前 DeepSeek 余额：一张半透明卡片加一个圆形刷新按钮，按住 Ctrl + 左键可以拖到屏幕任意位置。
+在 DeepSeek Harness 对话区显示当前 DeepSeek 余额：一张半透明卡片加一个圆形刷新按钮，按住 Ctrl + 左键可以拖到屏幕任意位置。
 
 ## 功能
 
-- 余额来源二选一：DSH 已登录账号（默认）或 API Key；`auto` 先问账号，失败再回退 Key。
+- 余额来源二选一：DeepSeek Harness 已登录账号（默认）或 API Key；`auto` 先问账号，失败再回退 Key。
 - 卡片透明度、磨砂、位置由插件行 `config` 控制，默认 0.42 表面不透明度、16px 磨砂，与聊天背景风格一致。
 - Ctrl + 左键拖动，位置存本窗口 `localStorage`；Ctrl + 双击回到配置的初始位置。
 - 显示最后更新时间与余额来源；读取失败时给出分类原因，不用 `0.00` 冒充余额。
-- 文字跟随 DSH 的「外观 → 字号」，不另造字号。
+- 文字跟随 DeepSeek Harness 的「外观 → 字号」，不另造字号。
 
 ## 安装
 
@@ -19,12 +19,12 @@
    ```yaml
    - insert:
        - id: deepseek-balance
-         name: dsh-deepseek-balance
+         name: DeepSeek Harness-deepseek-balance
          config:
            source: auto
    ```
 
-3. 重启 DSH，让宿主路由就绪。
+3. 重启 DeepSeek Harness，让宿主路由就绪。
 
 ## 配置
 
@@ -49,8 +49,8 @@
 ## 数据与隐私
 
 - 余额请求由宿主进程发起；页面只接收金额字符串，API Key 不会进入页面。
-- API Key 走 DSH 凭据服务，不写进配置文件；仓库不含任何密钥。
-- `localStorage` 只存拖动位置（键 `dsh-deepseek-balance:position`）。
+- API Key 走 DeepSeek Harness 凭据服务，不写进配置文件；仓库不含任何密钥。
+- `localStorage` 只存拖动位置（键 `DeepSeek Harness-deepseek-balance:position`）。
 
 ## 目录
 
@@ -58,6 +58,6 @@
 .
 ├── lib/index.js       宿主半侧：余额路由（账号 / API Key）
 ├── lib/client.js      浏览器半侧：余额卡片、拖动、刷新
-├── package.json       bundle 与 dsh.client 声明
+├── package.json       bundle 与 DeepSeek Harness.client 声明
 └── cordis.patch.yml   装载器补丁
 ```
